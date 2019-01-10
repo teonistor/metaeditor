@@ -9,11 +9,16 @@ public class Face : MonoBehaviour {
     Mesh mesh;
     bool dirty;
 
+    [SerializeField] bool split = false;
+
     IEnumerator Start () {
         mesh = new Mesh {
             name = "GeneratedFace#" + UnityEngine.Random.Range(100000, 1000000)
         };
         mesh.MarkDynamic();
+        mesh.vertices = new Vector3[3];
+        mesh.triangles = new int[] { 0, 1, 2 };
+        mesh.uv = new Vector2[3];
         GetComponent<MeshFilter>().mesh = mesh;
 
         // Perform mesh recalculations more seldom, to hopefully increase performance
@@ -34,39 +39,30 @@ public class Face : MonoBehaviour {
         this.a = a;
         this.b = b;
         this.c = c;
-
-        mesh.vertices = new Vector3[3];
-        mesh.triangles = new int[] { 0, 1, 2 };
-        mesh.uv = new Vector2[3];
+        
         dirty = true;
     }
 
     void Update () {
         // TODO Only update when changes occur
         if (dirty) {
-            //mesh = new Mesh();
-            //mesh.MarkDynamic();
-
-            //mesh.vertices = new Vector3[3];
-            //mesh.triangles = new int[] { 0, 1, 2 };
-            //mesh.uv = new Vector2[] {
-            //    new Vector2(0, 0),
-            //    new Vector2(0, 1),
-            //    new Vector2(1, 0)
-            //};
-
             mesh.vertices = new Vector3[]{ a.transform.localPosition,
              b.transform.localPosition,
               c.transform.localPosition
             };
-            //mesh.RecalculateNormals();
-            //GetComponent<MeshFilter>().mesh = mesh;
-            //print(a.transform.position + " WTF " + mesh.vertices[0] + mesh.vertices[2] + mesh.vertices[1] + mesh.normals[0] + mesh.normals[2] + mesh.normals[1]);
+        }
+
+        // Temp
+        if (split) {
+            split = false;
+            Split();
         }
     }
 
     internal void Split () {
-        throw new NotImplementedException();
+        Vertex d = a.G(b, c);
+        Instantiate(gameObject, transform.parent).GetComponent<Face>().Init(b, c, d);
+        Instantiate(gameObject, transform.parent).GetComponent<Face>().Init(c, a, d);
+        Init(a, b, d); // Must be last
     }
-
 }

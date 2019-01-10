@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Vertex : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    internal Vertex G(Vertex b, Vertex c) {
+        Vertex v = Instantiate(gameObject, transform.parent).GetComponent<Vertex>();
+        v.transform.position = (c.transform.position + b.transform.position + transform.position) / 3f;
+        return v;
+    }
 }
