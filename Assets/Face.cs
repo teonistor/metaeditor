@@ -16,13 +16,16 @@ public class Face : MonoBehaviour {
         mesh.MarkDynamic();
         GetComponent<MeshFilter>().mesh = mesh;
 
-        WaitForSeconds wait = new WaitForSeconds(1f);
-        while(true) {
+        // Perform mesh recalculations more seldom, to hopefully increase performance
+        WaitForSeconds wait = new WaitForSeconds(0.1f);
+        for (int i = 0; ; i = (i + 1) % 10) {
             yield return wait;
             if (dirty) {
-                //mesh.RecalculateNormals();
-                mesh.RecalculateTangents();
-                mesh.RecalculateBounds();
+                mesh.RecalculateNormals();
+                if (i == 0) {
+                    mesh.RecalculateTangents();
+                    mesh.RecalculateBounds();
+                }
             }
         }
     }
@@ -52,21 +55,18 @@ public class Face : MonoBehaviour {
             //    new Vector2(1, 0)
             //};
 
-            mesh.vertices = new Vector3[]{ a.transform.position,
+            mesh.vertices = new Vector3[]{ a.transform.localPosition,
              b.transform.localPosition,
               c.transform.localPosition
             };
-            mesh.RecalculateNormals();
-
-
+            //mesh.RecalculateNormals();
             //GetComponent<MeshFilter>().mesh = mesh;
-
             //print(a.transform.position + " WTF " + mesh.vertices[0] + mesh.vertices[2] + mesh.vertices[1] + mesh.normals[0] + mesh.normals[2] + mesh.normals[1]);
         }
     }
 
-    internal void Split (out Face f1, out Face f2) {
+    internal void Split () {
         throw new NotImplementedException();
     }
-    
+
 }
