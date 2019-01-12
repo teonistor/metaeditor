@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter))]
 public class Face : MonoBehaviour {
 
+    [SerializeField] Material active, inctive;
+
     Vertex a, b, c;
     Mesh mesh;
     bool dirty;

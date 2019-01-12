@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5c764ebafe4a6428c1219eb2355099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: {fileID: 2100000, guid: d7a4310764226d34bb10a36aa0fcf83f, type: 2}
+  inctive: {fileID: 2100000, guid: 0a56a71fe870251448400d0717847bcb, type: 2}
   split: 0
 --- !u!23 &5102898
 MeshRenderer:
@@ -239,6 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5c764ebafe4a6428c1219eb2355099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: {fileID: 2100000, guid: d7a4310764226d34bb10a36aa0fcf83f, type: 2}
+  inctive: {fileID: 2100000, guid: 0a56a71fe870251448400d0717847bcb, type: 2}
   split: 0
 --- !u!23 &463118756
 MeshRenderer:
@@ -323,6 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5c764ebafe4a6428c1219eb2355099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: {fileID: 2100000, guid: d7a4310764226d34bb10a36aa0fcf83f, type: 2}
+  inctive: {fileID: 2100000, guid: 0a56a71fe870251448400d0717847bcb, type: 2}
   split: 0
 --- !u!23 &500187368
 MeshRenderer:
@@ -365,6 +371,65 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 500187365}
   m_Mesh: {fileID: 0}
+--- !u!1 &508282858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 508282860}
+  - component: {fileID: 508282859}
+  m_Layer: 0
+  m_Name: Camera mount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &508282859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 508282858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 366d1d340fb2ba24dbf83feaad825f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refocusSmooth:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0.38558483
+      outSlope: 0.38558483
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!4 &508282860
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 508282858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1617305856}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654967704
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +520,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 654967704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1913476, y: 10.337188, z: 8.026794}
+  m_LocalPosition: {x: -1.991348, y: -1.16281, z: -0.673206}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 781614807}
@@ -551,7 +616,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 733385776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5445166, y: 12.423218, z: 10.695114}
+  m_LocalPosition: {x: -1.344517, y: 0.92322, z: 1.99511}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 781614807}
@@ -607,7 +672,7 @@ Transform:
   - {fileID: 5102896}
   - {fileID: 500187366}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &989311685
 GameObject:
@@ -699,7 +764,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 989311685}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29451656, y: 12.433218, z: 8.026794}
+  m_LocalPosition: {x: 0.9054834, y: 0.93322, z: -0.673206}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 781614807}
@@ -716,7 +781,6 @@ GameObject:
   - component: {fileID: 1617305855}
   - component: {fileID: 1617305854}
   - component: {fileID: 1617305853}
-  - component: {fileID: 1617305857}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -780,24 +844,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1617305852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 508282860}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1617305857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1617305852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366d1d340fb2ba24dbf83feaad825f43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1736492883
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +914,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1960141070
 GameObject:
@@ -953,7 +1006,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1960141070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1154838, y: 10.653217, z: 8.026794}
+  m_LocalPosition: {x: 2.315484, y: -0.84678, z: -0.673206}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 781614807}
@@ -1001,6 +1054,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5c764ebafe4a6428c1219eb2355099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: {fileID: 2100000, guid: d7a4310764226d34bb10a36aa0fcf83f, type: 2}
+  inctive: {fileID: 2100000, guid: 0a56a71fe870251448400d0717847bcb, type: 2}
   split: 0
 --- !u!23 &2022234985
 MeshRenderer:
