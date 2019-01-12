@@ -2,16 +2,16 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Face))]
-public class FaceUI : Editor {
+[CustomEditor(typeof(Meshable))]
+public class MeshableUI : Editor {
 
     public override void OnInspectorGUI () {
         DrawDefaultInspector();
 
         if (Application.isPlaying) {
-            Face face = (Face)target;
-            if (GUILayout.Button("Split face")) {
-                face.Split();
+            Meshable meshable = (Meshable)target;
+            if (GUILayout.Button("Save to file")) {
+                meshable.Save();
             }
         }
     }

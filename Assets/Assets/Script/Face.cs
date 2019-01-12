@@ -11,8 +11,6 @@ public class Face : MonoBehaviour {
     Mesh mesh;
     bool dirty;
 
-    [SerializeField] bool split = false;
-
     IEnumerator Start () {
         mesh = new Mesh {
             name = "GeneratedFace#" + UnityEngine.Random.Range(100000, 1000000)
@@ -52,12 +50,6 @@ public class Face : MonoBehaviour {
              b.transform.localPosition,
               c.transform.localPosition
             };
-        }
-
-        // Temp
-        if (split) {
-            split = false;
-            Split();
         }
     }
 

@@ -2,16 +2,19 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Face))]
-public class FaceUI : Editor {
+[CustomEditor(typeof(MeshLoader))]
+public class MeshLoaderUI : Editor {
 
     public override void OnInspectorGUI () {
         DrawDefaultInspector();
 
         if (Application.isPlaying) {
-            Face face = (Face)target;
-            if (GUILayout.Button("Split face")) {
-                face.Split();
+            MeshLoader meshLoader = (MeshLoader)target;
+            if (GUILayout.Button("Load from file")) {
+                meshLoader.LoadEditable();
+            }
+            if (GUILayout.Button("Load as single object")) {
+                meshLoader.LoadSingle();
             }
         }
     }

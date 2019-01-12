@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MeshLoader : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [SerializeField] string pathToLoadFrom;
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    internal void LoadSingle () {
+        Debug.LogWarning("Coming soon. " + pathToLoadFrom);
+    }
+
+    internal void LoadEditable () {
+        Debug.LogWarning("Coming soon. " + pathToLoadFrom);
+    }
 }

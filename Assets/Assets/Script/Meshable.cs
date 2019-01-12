@@ -12,10 +12,11 @@ public class Meshable : MonoBehaviour {
     [SerializeField] GameObject vertex, face;
 
     // In-editor saving...
-    [SerializeField] string path = "Assets/Resources/polyhedron.bin";
+    [SerializeField] string pathToSaveTo = "Assets/Resources/polyhedron.bin";
     [SerializeField] bool save = false;
 
     Vector3 centre;
+    int vertexCount, faceCount;
 
     IEnumerator Start () {
         Face[] faces = GetComponentsInChildren<Face>();
@@ -56,6 +57,24 @@ public class Meshable : MonoBehaviour {
     }
 
 	void Update () {
-		
-	}
+
+    }
+
+    internal Face InstantiateFace () {
+        return InstantiateWithIncrementalName(face, ref faceCount, "Face").GetComponent<Face>();
+    }
+
+    internal Vertex InstantiateVertex () {
+        return InstantiateWithIncrementalName(vertex, ref vertexCount, "Vertex").GetComponent<Vertex>();
+    }
+
+    GameObject InstantiateWithIncrementalName (GameObject prefab, ref int count, string name) {
+        GameObject go = Instantiate(prefab, transform);
+        go.name = string.Format("{0} #{1:D3}", name, ++count);
+        return go;
+    }
+
+    internal void Save () {
+        Debug.LogWarning("Coming soon. " + pathToSaveTo);
+    }
 }
