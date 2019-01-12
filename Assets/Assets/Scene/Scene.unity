@@ -349,6 +349,8 @@ MonoBehaviour:
   instantiationPosition: {x: 0, y: 0, z: 0}
   emptyMeshable: {fileID: 1976483422972454, guid: 6d0e4a1c449246c41bd3c71f805b6e83,
     type: 2}
+  singleObjectMaterial: {fileID: 2100000, guid: 0a56a71fe870251448400d0717847bcb,
+    type: 2}
 --- !u!4 &2048233489
 Transform:
   m_ObjectHideFlags: 0

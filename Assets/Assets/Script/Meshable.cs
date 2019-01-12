@@ -67,6 +67,7 @@ public class Meshable : MonoBehaviour {
     GameObject InstantiateWithIncrementalName (GameObject prefab, ref int count, string name) {
         GameObject go = Instantiate(prefab, transform);
         go.name = string.Format("{0} #{1:D3}", name, ++count);
+        print("Instantiated " + go.name);
         return go;
     }
 }

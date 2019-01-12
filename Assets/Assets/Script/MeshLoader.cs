@@ -8,14 +8,27 @@ public class MeshLoader : MonoBehaviour {
     [SerializeField] string pathToLoadFrom;
     [SerializeField] Vector3 instantiationPosition;
     [SerializeField] GameObject emptyMeshable;
+    [SerializeField] Material singleObjectMaterial;
 	
     internal void LoadSingle () {
-        Debug.LogWarning("Coming soon. " + pathToLoadFrom);
+        List<Vector3> points = new List<Vector3>();
+        List<int> triangles = new List<int>();
+        Read(points, triangles);
+
+        Mesh mesh = new Mesh();
+        mesh.name = "GeneratedMesh#" + UnityEngine.Random.Range(100000, 1000000);
+        mesh.vertices = points.ToArray();
+        mesh.triangles = triangles.ToArray();
+        mesh.RecalculateNormals();
+        mesh.RecalculateTangents();
+
+        GameObject meshHolder = new GameObject("Mesh holder");
+        meshHolder.AddComponent<MeshFilter>().mesh = mesh;
+        meshHolder.AddComponent<MeshRenderer>().material = singleObjectMaterial;
+        meshHolder.transform.position = instantiationPosition;
     }
 
     internal void LoadEditable () {
-        Debug.LogWarning("Coming soon. " + pathToLoadFrom);
-
         List<Vector3> points = new List<Vector3>();
         List<int[]> triangles = new List<int[]>();
         Read(points, null, triangles);
@@ -39,6 +52,7 @@ public class MeshLoader : MonoBehaviour {
     void Read(IList<Vector3> points, IList<int> flatTrianges=null, IList<int[]> nestedTriangles=null) {
         using(StreamReader reader = new StreamReader(pathToLoadFrom)) {
             string line = reader.ReadLine(); // Name... not used (yet)
+            print("Loading polyhedron \"" + line + "\" from " + pathToLoadFrom);
 
             line = reader.ReadLine(); // The first "---"
 
@@ -50,6 +64,7 @@ public class MeshLoader : MonoBehaviour {
                     float.Parse(split[2])
                 ));
             }
+            print("Read data for " + points.Count + " vertices");
 
             while (!"---".Equals(line = reader.ReadLine())) {
                 string[] split = line.Split(' ');
@@ -66,6 +81,11 @@ public class MeshLoader : MonoBehaviour {
                     });
                 }
             }
+
+            if (flatTrianges != null)
+                print("Read " + flatTrianges.Count + " flat triangle coordinates");
+            if (nestedTriangles != null)
+                print("Read data for " + nestedTriangles.Count + " faces");
         }
     }
 }
