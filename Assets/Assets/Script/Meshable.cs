@@ -7,8 +7,13 @@ public class Meshable : MonoBehaviour {
 
     internal static event Action<string, Vector3, float> OnCentreChange;
 
-    // Initially a tetrahedron
+    // Initially a tetrahedron TODO generate these from prefab
     [SerializeField] Vertex a, b, c, d;
+    [SerializeField] GameObject vertex, face;
+
+    // In-editor saving...
+    [SerializeField] string path = "Assets/Resources/polyhedron.bin";
+    [SerializeField] bool save = false;
 
     Vector3 centre;
 
