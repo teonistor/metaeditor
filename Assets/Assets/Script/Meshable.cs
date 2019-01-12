@@ -8,27 +8,23 @@ public class Meshable : MonoBehaviour {
     internal static event Action<string, Vector3, float> OnCentreChange;
 
     // Initially a tetrahedron TODO generate these from prefab
-    [SerializeField] Vertex a, b, c, d;
+    //[SerializeField] Vertex a, b, c, d;
     [SerializeField] GameObject vertex, face;
-
-    // In-editor saving...
-    [SerializeField] string pathToSaveTo = "Assets/Resources/polyhedron.bin";
-    [SerializeField] bool save = false;
-
+    
     Vector3 centre;
     int vertexCount, faceCount;
 
     IEnumerator Start () {
-        Face[] faces = GetComponentsInChildren<Face>();
-        if (faces.Length != 4) {
-            Debug.LogErrorFormat("Cannot construct tetrahedron with {0} faces", faces.Length);
-            yield break;
-        }
+        //Face[] faces = GetComponentsInChildren<Face>();
+        //if (faces.Length != 4) {
+        //    Debug.LogErrorFormat("Cannot construct tetrahedron with {0} faces", faces.Length);
+        //    yield break;
+        //}
 
-        faces[0].Init(a, b, c);
-        faces[1].Init(a, c, d);
-        faces[2].Init(a, d, b);
-        faces[3].Init(b, d, c);
+        //faces[0].Init(a, b, c);
+        //faces[1].Init(a, c, d);
+        //faces[2].Init(a, d, b);
+        //faces[3].Init(b, d, c);
 
         // More seldom update the centre point
         WaitForSeconds wait = new WaitForSeconds(0.5f);
@@ -56,7 +52,7 @@ public class Meshable : MonoBehaviour {
         }
     }
 
-	void Update () {
+	internal void Update () {
 
     }
 
@@ -72,9 +68,5 @@ public class Meshable : MonoBehaviour {
         GameObject go = Instantiate(prefab, transform);
         go.name = string.Format("{0} #{1:D3}", name, ++count);
         return go;
-    }
-
-    internal void Save () {
-        Debug.LogWarning("Coming soon. " + pathToSaveTo);
     }
 }

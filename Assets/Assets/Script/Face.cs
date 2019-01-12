@@ -7,7 +7,9 @@ public class Face : MonoBehaviour {
 
     [SerializeField] Material active, inctive;
 
-    Vertex a, b, c;
+    internal Vertex a { get; private set; }
+    internal Vertex b { get; private set; }
+    internal Vertex c { get; private set; }
     Mesh mesh;
     bool dirty;
 
@@ -55,8 +57,8 @@ public class Face : MonoBehaviour {
 
     internal void Split () {
         Vertex d = a.G(b, c);
-        Instantiate(gameObject, transform.parent).GetComponent<Face>().Init(b, c, d);
-        Instantiate(gameObject, transform.parent).GetComponent<Face>().Init(c, a, d);
+        GetComponentInParent<Meshable>().InstantiateFace().Init(b, c, d);
+        GetComponentInParent<Meshable>().InstantiateFace().Init(c, a, d);
         Init(a, b, d); // Must be last
     }
 }
